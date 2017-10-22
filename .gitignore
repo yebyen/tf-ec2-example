@@ -1,4 +1,6 @@
 /.env*
 /.terraform/plugins/darwin_amd64/lock.json
 /.terraform/plugins/darwin_amd64/terraform-provider-aws_v1.1.0_x4
+/.terraform/plugins/linux_amd64/lock.json
+/.terraform/plugins/linux_amd64/terraform-provider-aws_v1.1.0_x4
 /terraform.tfstate*

@@ -1,13 +1,13 @@
 provider "aws" { }
-resource "aws_key_pair" "yebyen" {
-  key_name   = "yebyen-key"
-  public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDib2Mn2TVPncZW9iivWH13ZkTIMUaKPhJQp7QFYrTZtnoCiaq9pINgmW6LoGEcNdLBctOH3/aDVW3Js+AGjwJJns0/rR/G9TCL/DcFCpWH5FmOgt5KRXU+IPmNKbbxMuGXJH2khWI+crX8QkTaFPZpAeugHdVgCuK4rcblWDDnqX7McH4tgEAt/Oe+iTPEwk3DtosRKl79p6FIUo0JMQYMYErgae6e1c4n/h1Pg8EPCfGdaVcqeIfHoEisJHUKHPsmQ3JUf2LQyEM5K4/Kx4YH+Xz3KrI/2Bs7CXq+8/aw0jlnnSmgQ13VUdhp1wNpOErWAhTtcV1DF9TeqDgsbjEX kingdonb@kbarret8-mbpro-2014.dhcp.nd.edu"
+resource "aws_key_pair" "mootop" {
+  key_name   = "mootop-key"
+  public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCwSARpkC0l+gN5C1i26QPtYqKGsW6UBmP8zp9FdceaX5N1KcoRkyc4QRe0UXb1rajelQIaxd2SCAv63ilFkO5sqV9jryZlfq/QBMHByXbdwMcvr5aDVVSwtXLVg/mRSIeIbwcuphOKkTtykFO0dGiMqBpOmVC9ytDnjFak5+3cgtwGxH62yujokCgMc7AWZRrZqUsl64sOoj+gHjNEDOymiBEjbitnJINPWQy+2QNLkXCD1Y42zDl98DDO7CVMbABfFz/h4ex7suFOXdk2vdYEVWMA16Hk7xd3oiGSZ9Xi7dKXR2ky7L0iPL2ajLxy6vTd7zBKcuD4sY9ihIezfLFX kingdon@mootop"
 }
 resource "aws_instance" "example" {
   ami = "ami-2d39803a"
   instance_type = "t2.micro"
   vpc_security_group_ids = ["${aws_security_group.instance.id}"]
-  key_name = "yebyen-key"
+  key_name = "mootop-key"
   subnet_id = "${var.subnet_id}"
 
   user_data = <<-EOF
@@ -57,11 +57,11 @@ variable "server_port" {
 }
 variable "vpc_id" {
   description = "The VPC to put the t2.micro into"
-  default = "vpc-fe14c986"
+  default = "vpc-1d29f465"
 }
 variable "subnet_id" {
   description = "The Public Subnet ID that ports will be exposed on"
-  default = "subnet-af958ff5"
+  default = "subnet-cab7ad90"
 }
 output "public_ip" {
   value = "${aws_instance.example.public_ip}"
