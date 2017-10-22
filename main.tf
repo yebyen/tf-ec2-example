@@ -8,7 +8,7 @@ resource "aws_instance" "example" {
   instance_type = "t2.micro"
   vpc_security_group_ids = ["${aws_security_group.instance.id}"]
   key_name = "yebyen-key"
-  subnet_id = "subnet-fac1dba0"
+  subnet_id = "${var.subnet_id}"
 
   user_data = <<-EOF
               #!/bin/bash -x
@@ -25,7 +25,7 @@ resource "aws_instance" "example" {
 }
 resource "aws_security_group" "instance" {
   name = "terraform-example-instance"
-  vpc_id = "vpc-8fcc11f7"
+  vpc_id = "${var.vpc_id}"
   # TCP access
   ingress {
     from_port = 0
@@ -54,6 +54,14 @@ resource "aws_security_group" "instance" {
 variable "server_port" {
   description = "The port the server will use for HTTP requests"
   default = 8080
+}
+variable "vpc_id" {
+  description = "The VPC to put the t2.micro into"
+  default = "vpc-fe14c986"
+}
+variable "subnet_id" {
+  description = "The Public Subnet ID that ports will be exposed on"
+  default = "subnet-af958ff5"
 }
 output "public_ip" {
   value = "${aws_instance.example.public_ip}"
