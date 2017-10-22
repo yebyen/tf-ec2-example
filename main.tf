@@ -1,7 +1,7 @@
 provider "aws" { }
 resource "aws_key_pair" "mootop" {
   key_name   = "mootop-key"
-  public_key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIK+7MSo5F+RBU2EA2fQQf/fNZANJ3YGjCFxLOxncvzLo kingdon@mootop"
+  public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCwSARpkC0l+gN5C1i26QPtYqKGsW6UBmP8zp9FdceaX5N1KcoRkyc4QRe0UXb1rajelQIaxd2SCAv63ilFkO5sqV9jryZlfq/QBMHByXbdwMcvr5aDVVSwtXLVg/mRSIeIbwcuphOKkTtykFO0dGiMqBpOmVC9ytDnjFak5+3cgtwGxH62yujokCgMc7AWZRrZqUsl64sOoj+gHjNEDOymiBEjbitnJINPWQy+2QNLkXCD1Y42zDl98DDO7CVMbABfFz/h4ex7suFOXdk2vdYEVWMA16Hk7xd3oiGSZ9Xi7dKXR2ky7L0iPL2ajLxy6vTd7zBKcuD4sY9ihIezfLFX kingdon@mootop"
 }
 resource "aws_instance" "example" {
   ami = "ami-2d39803a"
